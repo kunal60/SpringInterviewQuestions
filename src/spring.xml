@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+	
+	<bean id="normalEmp" class="com.info.ScopesDemo.NormalEmployee">
+		<property name="empId" value="101"></property>
+		<property name="address" ref="addr"></property>
+	</bean>
+
+
+	<bean id="regularlEmp" class="com.info.ScopesDemo.RegularEmployee">
+		<property name="empId" value="102"></property>
+		<property name="address" ref="addr"></property>
+	</bean>
+
+
+
+	<bean id="addr" class="com.info.ScopesDemo.Address" scope="prototype">
+		<property name="pincode" value="185131"></property>
+		<property name="location" value="Rajouri"></property>
+	</bean>
+
+
+
+
+	<bean id="ticketVendingMachine" class="com.info.PrototypeInSingleton.TicketVendingMachine"
+		scope="singleton">
+		<!-- lookup method name is from TicketVendingMachine class -->
+		<lookup-method name="generateTicket" bean="ticket" />
+	</bean>
+
+
+	<bean id="ticket" class="com.info.PrototypeInSingleton.Ticket"
+		scope="prototype">
+
+	</bean>
+
+
+
+
+
+
+
+
+
+
+
+</beans>
